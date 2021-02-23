@@ -26,10 +26,10 @@ app.get('/crush', getAllCrush);
 
 app.get('/crush/:id', getCrushById);
 
-app.post('/crush', checkToken, validateCrush, createCrush);
+// app.post('/crush', checkToken, validateCrush, createCrush);
 
-app.put('/crush/:id', checkToken, validateCrush, editCrush);
+// app.put('/crush/:id', checkToken, validateCrush, editCrush);
 
-app.delete('/crush/:id', checkToken, deleteCrush);
+// app.delete('/crush/:id', checkToken, deleteCrush);
 
 app.listen(3000);
