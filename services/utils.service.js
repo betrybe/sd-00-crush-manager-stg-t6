@@ -1,9 +1,9 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 
 const FIRST = 0;
 
-const crushDB = async () => fs.readFileSync(
+const crushDB = async () => fs.readFile(
   path.join(__dirname, '../crush.json'),
   'utf8',
 );
