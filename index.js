@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 const { getAllCrush } = require('./getAllCrushes');
 const { getCrushById } = require('./getCrushById');
 const { login } = require('./getToken');
-const { checkToken } = require('./services');
-const { validateCrush } = require('./validateCrush');
-const { createCrush } = require('./createCrush');
-const { editCrush } = require('./editCrush');
-const { deleteCrush } = require('./deleteCrush');
+// const { checkToken } = require('./services');
+// const { validateCrush } = require('./validateCrush');
+// const { createCrush } = require('./createCrush');
+// const { editCrush } = require('./editCrush');
+// const { deleteCrush } = require('./deleteCrush');
 
 app.post('/login', login);
 
