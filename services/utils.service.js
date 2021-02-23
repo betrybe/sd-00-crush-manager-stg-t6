@@ -3,7 +3,7 @@ const path = require('path');
 
 const FIRST = 0;
 
-const crushDB = async () => fs.readFileSync(
+const getCrushes = async () => fs.readFileSync(
   path.join(__dirname, '../crush.json'),
   'utf8',
 );
@@ -16,23 +16,23 @@ const replaceCrushDB = async (newDB) => {
   );
 };
 
-const getCrushDB = async () => JSON.parse(await crushDB());
+const getCrushDB = async () => JSON.parse(await getCrushes());
 
 const getCrushById = async (id) => JSON
-  .parse(await crushDB())
+  .parse(await getCrushes())
   .filter(({ id: crushId }) => Number(crushId) === Number(id));
 
 const getCrushByQuery = async (q) => JSON
-  .parse(await crushDB())
+  .parse(await getCrushes())
   .filter(({ name }) => name.includes(q));
 
 const getCrushLastId = async () => JSON
-  .parse(await crushDB())
+  .parse(await getCrushes())
   .reduce((id, current) => (id > current.id ? id : current.id), FIRST);
 
 const deleteCrushById = async (id) => {
   const crushList = JSON
-    .parse(await crushDB())
+    .parse(await getCrushes())
     .filter(({ id: crushId }) => crushId !== Number(id));
   await replaceCrushDB(crushList);
   return true;
@@ -40,7 +40,7 @@ const deleteCrushById = async (id) => {
 
 const updateCrushById = async (id, updatedCrush) => {
   const crushList = JSON
-    .parse(await crushDB())
+    .parse(await getCrushes())
     .map((crush) => (crush.id === Number(id)
       ? { ...updatedCrush, id: Number(id) } : crush));
   await replaceCrushDB(crushList);
